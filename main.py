@@ -3,9 +3,9 @@ import subprocess
 import sys
 
 from utils.csvreader import *
+from utils.score import *
 
 req = 1
-
 while(not(req >=1 and req <= 6)):
     req = input("Select a dataset between 1 and 6 : \n")
     try:
@@ -14,7 +14,7 @@ while(not(req >=1 and req <= 6)):
         print("Valuetype 'int' expected")
         req = 0
 
-meth = 0
+meth = 1
 while(not(meth >=1 and meth <= 1)):
     req = input("Select a method between 1 and # : \n")
     try:
@@ -32,10 +32,10 @@ servers = csvreader('data/servers_catalog.csv')
 # "requests list represents the list of services that needs to be sorted through servers
 requests = csvreader('data/ctstfr0280_input_{}.csv'.format(req))
 
-
-
-print(subprocess.run([sys.executable,'methods/method{}/resolution.py'.format(meth)]))
+subprocess.run([sys.executable,'methods/method{}/resolution.py'.format(meth)])
 
 
 toc = time.time()
 print("Time elapsed : {} seconds".format(toc-tic))
+
+print(score("output/result-04Apr202122-45-28.csv",6))

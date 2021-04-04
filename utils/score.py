@@ -1,6 +1,6 @@
-from csvreader import *
+from utils import csvreader as csv
 
-def score(output,duration):
+def score(file,duration):
 
     score = 0
 
@@ -24,8 +24,8 @@ def score(output,duration):
                ['compute3', 16200, 6000],
                ['memory1', 10000, 1000],
                ['memory2', 14000, 1300]]
-
-    output = csvreader(output)
+    output = csv.csvreader(file)
+    print(output)
     for i in range(len(output)):
         for j in range(len(catalog)):
             if output[i][0] == catalog[j][0]:
