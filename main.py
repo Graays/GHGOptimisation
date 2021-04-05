@@ -1,11 +1,12 @@
 import time
-import subprocess
-import sys
+import csv as mescouilles
 
 from utils.csvreader import *
 from utils.score import *
 
-req = 1
+import methods.method1.resolution
+
+req = 3
 while(not(req >=1 and req <= 6)):
     req = input("Select a dataset between 1 and 6 : \n")
     try:
@@ -27,15 +28,22 @@ while(not(meth >=1 and meth <= 1)):
 tic = time.time()
 
 # "servers" list represents the catalog of available servers with specs
-servers = csvreader('data/servers_catalog.csv')
+catalog = csvreader('data/servers_catalog.csv')
 
 # "requests list represents the list of services that needs to be sorted through servers
-requests = csvreader('data/ctstfr0280_input_{}.csv'.format(req))
+temp = csvreader('data/ctstfr0280_input_{}.csv'.format(req))
+services = temp[1:]
+duration = int(temp[0][0])
 
-subprocess.run([sys.executable,'methods/method{}/resolution.py'.format(meth)])
+del temp
 
+
+c = mescouilles.writer(open("output/result-{}-meth{}.csv".format(time.strftime("%d%b-%H-%M", time.gmtime(time.time())),meth), "w", newline='\n'))
+
+print(eval("methods.method{}.resolution.resolution(catalog, services, duration)".format(meth)))
 
 toc = time.time()
 print("Time elapsed : {} seconds".format(toc-tic))
+print(score("output/result-05Apr-15-36-meth1.csv",duration))
 
-print(score("output/result-04Apr202122-45-28.csv",6))
+

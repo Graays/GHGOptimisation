@@ -25,7 +25,6 @@ def score(file,duration):
                ['memory1', 10000, 1000],
                ['memory2', 14000, 1300]]
     output = csv.csvreader(file)
-    print(output)
     for i in range(len(output)):
         for j in range(len(catalog)):
             if output[i][0] == catalog[j][0]:
