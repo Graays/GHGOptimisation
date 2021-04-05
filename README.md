@@ -16,12 +16,19 @@ in servers. The data folder regroups a catalog of servers with their specs. The 
 
 ## Documentation
 ***
-INCOMING
+
+
 
 ##Incoming Features
 ***
 
-ATM, just fixing bugs and doing optimisation fixes
+* Leaderboard :
+    * The leaderboard will be able to create a graph of the evolution of code efficency depending on the methods and the service list. At the moment, the server_catalog will stay the same.
+    * Creating a JSON file that will be used as a database
+    * Creation quick functions that whill be launched daily to check the code on GitHub and update the database
+    
+* Method1 :
+    * Optimisation of the actual developped solution
     
 ## FAQs
 ***
