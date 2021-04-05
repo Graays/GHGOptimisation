@@ -4,3 +4,5 @@
 .idea
 output
 dev-test
+__pycache__
+methods/method1/__pycache__
