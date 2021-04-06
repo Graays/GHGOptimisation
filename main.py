@@ -5,6 +5,9 @@ from utils.csvwriter import *
 from utils.score import *
 
 import methods.method1.resolution
+import methods.method2.resolution
+import methods.method3.resolution
+import methods.method4.resolution
 
 req = 3
 while(not(req >=1 and req <= 6)):
@@ -15,11 +18,11 @@ while(not(req >=1 and req <= 6)):
         print("Valuetype 'int' expected")
         req = 0
 
-meth = 1
-while(not(meth >=1 and meth <= 1)):
-    req = input("Select a method between 1 and # : \n")
+meth = 4
+while(not(meth >=1 and meth <= 4)):
+    req = input("Select a method between 1 and 4 : \n")
     try:
-        meth = int(req)
+        meth = int(meth)
     except:
         print("Valuetype 'int' expected")
         meth = 0
@@ -37,12 +40,7 @@ duration = int(temp[0][0])
 
 del temp
 
-
-
 csvwriter(eval("methods.method{}.resolution.resolution(catalog, services, duration)".format(meth)), meth)
 
 toc = time.time()
 print("Time elapsed : {} seconds".format(toc-tic))
-
-print(score("output/result-04-1056-meth1.csv",duration))
-
