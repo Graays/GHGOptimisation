@@ -25,16 +25,17 @@ while(not(meth >=1 and meth <= 1)):
         meth = 0
 
 # Starting the clock
-tic = time.time()
+
 
 # "servers" list represents the catalog of available servers with specs
 catalog = csvreader('data/servers_catalog.csv')
+
+tic = time.time()
 
 # "requests list represents the list of services that needs to be sorted through servers
 temp = csvreader('data/ctstfr0280_input_{}.csv'.format(req))
 services = temp[1:]
 duration = int(temp[0][0])
-
 del temp
 
 
@@ -44,5 +45,5 @@ csvwriter(eval("methods.method{}.resolution.resolution(catalog, services, durati
 toc = time.time()
 print("Time elapsed : {} seconds".format(toc-tic))
 
-print(score("output/result-04-1056-meth1.csv",duration))
+
 
