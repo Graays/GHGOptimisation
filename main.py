@@ -1,7 +1,7 @@
 import time
-import csv as mescouilles
 
 from utils.csvreader import *
+from utils.csvwriter import *
 from utils.score import *
 
 import methods.method1.resolution
@@ -38,12 +38,11 @@ duration = int(temp[0][0])
 del temp
 
 
-c = mescouilles.writer(open("output/result-{}-meth{}.csv".format(time.strftime("%d%b-%H-%M", time.gmtime(time.time())),meth), "w", newline='\n'))
 
-print(eval("methods.method{}.resolution.resolution(catalog, services, duration)".format(meth)))
+csvwriter(eval("methods.method{}.resolution.resolution(catalog, services, duration)".format(meth)), meth)
 
 toc = time.time()
 print("Time elapsed : {} seconds".format(toc-tic))
-print(score("output/result-05Apr-15-36-meth1.csv",duration))
 
+print(score("output/result-04-1056-meth1.csv",duration))
 

@@ -55,7 +55,6 @@ def resolution(catalog, services, duration):
 
     for i in range(len(services)):
         temp = optimisation(data,duration,i)
-        print(temp)
         output.append([catalog[temp[1]][0],services[temp[0]][0]])
 
     return(output)
